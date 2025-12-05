@@ -227,26 +227,11 @@
       } else {
         // guest title + link
         titleEl.textContent = "DTDC X Findit";
-        // guest apna hi URL share karega (ya same guestLink bhi rakh sakte ho)
-        shareLinkInput.value = window.location.href;
+       
       }
       sharePopup.style.display = "block";
 
-      // Copy button
-      copyBtn.addEventListener("click", () => {
-        const text = shareLinkInput.value;
-        if (!text) return;
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(() => {
-            const old = copyBtn.innerText;
-            copyBtn.innerText = "Copied!";
-            setTimeout(() => (copyBtn.innerText = old), 1200);
-          }).catch(fallbackCopy);
-        } else {
-          fallbackCopy();
-        }
-
+      
         function fallbackCopy() {
           shareLinkInput.select();
           shareLinkInput.setSelectionRange(0, 99999);
